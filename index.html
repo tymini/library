@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+
+    <script src="js/modernizr.custom.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.fancybox.css" rel="stylesheet">
+    <link href="css/flickity.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/queries.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<header id="main">
+    <section class="hero">
+        <div class="container">
+            <div class="row nav-wrapper">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left" style="font-size: 20px">
+                    LIBRARY RENT
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-left job-menu" style="font-size: 16px">
+                    <div class="item">
+                        <a href="javascript:void(0)" class="animated fadeInUp">首页</a>
+                    </div>
+                    <div class="item">
+                        <a href="#set" class="animated fadeInUp">登记</a>
+                    </div>
+                    <div class="item">
+                        <a href="#info" class="animated fadeInUp">网站介绍</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row hero-content">
+                <div class="col-md-12 text-center" style="margin-top: 30%">
+                    <div class="row">
+                        <input type="text" name="name" id="search_value" required="required" class="form wp2"
+                               placeholder="请填写图书名(例如:西游记)">
+                    </div>
+                    <a href="javascript:void(0)" id="search" class="read-btn animated fadeInUp">查询</a>
+                    <h1 id="noExtension" style="display: none">请安装
+                        <a target="_blank"
+                           href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a> 再使用</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+<section class="services-list page-section" id="info">
+    <div class="container">
+        <div class="row">
+            <div class="disc-section text-center">
+                <p style="font-size: 20px;padding-bottom: 20px;">
+                    <img src="img/e.png" style="height: 40px;">
+                    基于新一代区块链公链星云链，一个公开透明可溯源的图书查询系统</p>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4 feature-1 wp2">
+                    <div class="feature-content">
+                        <img src="img/a.png" alt="">
+                        <h1>安全</h1>
+                        <p>基于新一代公链星云链加密，保证记录安全公开透明</p>
+                    </div>
+                </div>
+                <div class="col-md-4 feature-3 wp2 delay-05s">
+                    <div class="feature-content">
+                        <img src="img/b.png" alt="">
+                        <h1>简单</h1>
+                        <p>无需注册，可快速查阅一本书完整的借阅记录</p>
+                    </div>
+                </div>
+                <div class="col-md-4 feature-2 wp2 delay-1s">
+                    <div class="feature-content">
+                        <img src="img/c.png" alt="">
+                        <h1>不可篡改</h1>
+                        <p>基于新一代区块链公链星云链记录，一旦记录，永久不可篡改</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="book-record" id="app">
+    <div class="container">
+        <div class="title-section text-center">
+            <h2 style="margin-top: 100px;color:#82da73">借阅记录</h2>
+        </div>
+        <table id="tableList" class="table table-bordered" style="color: #333;margin-top: 30px">
+            <thead>
+            <tr style="background: #f9f9f9">
+                <th>图书名称</th>
+                <th>借阅人</th>
+                <th>借阅人手机号</th>
+                <th>日期</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="l in list">
+                <td v-html="l.key"></td>
+                <td v-html="l.name"></td>
+                <td v-html="l.phone"></td>
+                <td v-html="l.date"></td>
+                <td v-html="l.remark"></td>
+            </tr>
+            </tbody>
+        </table>
+       <!-- <div class="relative fullwidth col-xs-12" style="margin-top: 30px">
+            <button id="addRecord" name="submit" class="form-btn new-btn">添加记录</button>
+        </div>-->
+    </div>
+</section>
+<section id="set" class="container page-section">
+    <div class="inner contact wp2 delay-05s">
+        <div class="title-section text-center">
+            <h2 style="color:#82da73">
+                <img src="img/d.png"  style="height: 40px;">
+                添加记录</h2>
+            <div class="divider">
+                <i class="fa fa-star-o fa-lg"></i>
+            </div>
+        </div>
+        <div class="contact-form">
+            <div class="col-xs-12 animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="300">
+                <div class="col-xs-6">
+                    <input type="text" id="name" class="form" placeholder="图书名称">
+                </div>
+                <div class="col-xs-6">
+                    <input type="select" id="user" class="form" placeholder="借阅人姓名">
+                </div>
+                <div class="col-xs-6">
+                    <input type="tel" id="phone" class="form" placeholder="借阅人手机号" maxlength="11">
+                </div>
+                <div class="col-xs-6">
+                    <input type="date" id="date" class="form" placeholder="借阅时间" style="line-height: normal">
+                </div>
+                <div class="col-xs-12">
+                    <input type="text" id="remark" class="form" placeholder="备注">
+                </div>
+
+            </div>
+            <div class="relative fullwidth col-xs-12">
+                <button id="push" name="submit" class="form-btn semibold new-btn">提交</button>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>
+<footer id="about" class="footer">
+    <section id="site-socials" class="no-padding white-bg">
+        <div class="site-socials inner no-padding">
+            <div class="address socials animated fadeInRight visible" data-animation="fadeInRight"
+                 data-animation-delay="500">
+                <p>Copyright &copy; 2018.基于新一代区块链公链<a href="https://nebulas.io/" target="_blank">NAS</a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </div>
+    </section>
+</footer>
+<link rel="stylesheet" type="text/css" href="css/component.css"/>
+<script src=js/nebPay.js></script>
+<script src="js/toucheffects.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/flickity.pkgd.min.js"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(function () {
+        var NebPay = require("nebpay");
+        var nebPay = new NebPay();
+
+        var dappAddress = "n1hsd2d5xMT4d64ZX2eFVC43zkkc3w5bZD7";
+        //检查扩展是否已安装
+        //如果安装了扩展，var“webExtensionWallet”将被注入到web页面中1
+        setTimeout(function () {
+            if (typeof (webExtensionWallet) === "undefined") {
+                //alert ("扩展钱包未安装，请先安装.")
+                $("#noExtension").show();
+            }
+        }, 500);
+
+
+        $("#search").click(function () {
+            var search_value = $("#search_value").val();
+            if (search_value == '') {
+                search_value = '西游记'
+            }
+            var to = dappAddress;
+            var value = "0";
+            var callFunction = "get";
+            var callArgs = [];
+            callArgs.push(search_value);
+            nebPay.simulateCall(to, value, callFunction, JSON.stringify(callArgs), {
+                listener: cbSearch
+            });
+        });
+
+        function cbSearch(resp) {
+            var result = resp.result
+            if (result === 'null' || result == '') {
+                layer.msg('');
+                layer.confirm('没有查到记录,是否添加记录？', {
+                    btn: ['确定', '取消'] //按钮
+                }, function (index) {
+                    layer.close(index);
+                    location.href = "#set";
+                    $('#name').val($("#search_value").val()||'西游记');
+                }, function () {
+                    console.log(1);
+                });
+            } else {
+                $('#tableList').show();
+                var resultObj = JSON.parse(result);
+                var len = resultObj.name.split('|-').length;
+                var obj = [];
+                for (var i = 0; i < len; i++) {
+                    var temp = {
+                        name: resultObj.name.split('|-')[i],
+                        phone: resultObj.phone.split('|-')[i],
+                        date: resultObj.date.split('|-')[i],
+                        key: resultObj.key,
+                        remark:resultObj.remark.split('|-')[i]
+                    }
+                    obj.push(temp);
+                }
+                Vue.set(app, 'list', obj);
+                $('#app').show();
+                toTarget('app');
+
+                $('#addRecord').on('click',function(){
+                    toTarget('set');
+                })
+            }
+        }
+
+        function toTarget(id) {
+            $("html,body").animate({scrollTop: $("#" + id).offset().top}, 1000);
+        }
+
+        $("#push").click(function () {
+            var name = $('#name').val();
+            var user = $('#user').val();
+            var phone = $('#phone').val();
+            var date = $('#date').val();
+            var remark = $('#remark').val();
+            if (name == '') {
+                layer.msg('图书名称不能为空');
+                return;
+            } else if (user == '') {
+                layer.msg('借阅人不能为空');
+                return;
+            } else if (phone == '') {
+                layer.msg('借阅人手机号不能为空');
+                return;
+            } else if (date == '') {
+                layer.msg('借阅时间不能为空');
+                return;
+            }
+            var to = dappAddress;
+            var value = "0";
+            var callFunction = "save"
+            var callArgs = [];
+            callArgs.push(name);
+            callArgs.push(user);
+            callArgs.push(phone);
+            callArgs.push(new Date().format("yyyy-MM-dd"))
+            callArgs.push(remark);
+            nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
+                listener: cbPush
+            });
+        });
+
+        function cbPush(resp) {
+            console.log("response of push: " + resp)
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: []
+            }
+        });
+
+
+        Date.prototype.format = function (format) {
+            var args = {
+                "M+": this.getMonth() + 1,
+                "d+": this.getDate(),
+                "h+": this.getHours(),
+                "m+": this.getMinutes(),
+                "s+": this.getSeconds(),
+                "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter
+                "S": this.getMilliseconds()
+            };
+            if (/(y+)/.test(format))
+                format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var i in args) {
+                var n = args[i];
+                if (new RegExp("(" + i + ")").test(format))
+                    format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
+            }
+            return format;
+        };
+    })
+</script>
+</body>
+
+</html>
